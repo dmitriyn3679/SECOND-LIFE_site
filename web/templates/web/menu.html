@@ -1,0 +1,107 @@
+{% extends "web/base.html" %}
+
+{% load web_extras %}
+
+{% block title %}
+Головна сторінка
+{%endblock%}
+
+
+{% block main %}
+<div class="container-fluid mb-5 mt-5">
+    <div class="row height d-flex justify-content-center align-items-center row-style">
+        <div class="col-md-8">
+            <div class="search"> <i class="fa fa-search"></i>
+                <input type="text" class="form-control" placeholder="Я хочу купити...">
+                <button class="btn btn-gradien-color">Пошук</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="Icons">
+    <div class="container-fluid categories-color py-1">
+        <div class="container">
+            <ul>
+                <li>
+                    <a class="btn-mod btn-10" href="{% url 'web:all_in_category' 'detskiy-mir' %}"><img src="https://img.icons8.com/carbon-copy/100/000000/hand-drawn-star.png"/></a>
+                    <a class="text-style" href="{% url 'web:all_in_category' 'detskiy-mir' %}">Дитячий світ</a>
+                </li>
+                <li>
+                    <a class="btn-mod btn-10" href="{% url 'web:all_in_category' 'nedvizhimost' %}"><img src="https://img.icons8.com/carbon-copy/100/000000/hand-drawn-star.png"/></a>
+                    <a class="text-style" href="{% url 'web:all_in_category' 'nedvizhimost' %}">Нерухомість</a>
+                </li>
+                <li>
+                    <a class="btn-mod btn-10" href="{% url 'web:all_in_category' 'transport' %}"><img src="https://img.icons8.com/carbon-copy/100/000000/hand-drawn-star.png"/></a>
+                    <a class="text-style" href="{% url 'web:all_in_category' 'transport' %}">Авто</a>
+                </li>
+                <li>
+                    <a class="btn-mod btn-10" href="{% url 'web:all_in_category' 'zapchasti-dlya-transporta' %}"><img src="https://img.icons8.com/carbon-copy/100/000000/hand-drawn-star.png"/></a>
+                    <a class="text-style" href="{% url 'web:all_in_category' 'zapchasti-dlya-transporta' %}">З/ч для транспорту</a>
+                </li>
+                <li>
+                    <a class="btn-mod btn-10" href="{% url 'web:all_in_category' 'rabota' %}"><img src="https://img.icons8.com/carbon-copy/100/000000/hand-drawn-star.png"/></a>
+                    <a class="text-style" href="{% url 'web:all_in_category' 'rabota' %}">Робота</a>
+                </li>
+                <li>
+                    <a class="btn-mod btn-10" href="{% url 'web:all_in_category' 'uslugi' %}"><img src="https://img.icons8.com/carbon-copy/100/000000/hand-drawn-star.png"/></a>
+                    <a class="text-style" href="{% url 'web:all_in_category' 'uslugi' %}">Бізнес та послуги</a>
+                </li>
+                <li>
+                    <a class="btn-mod btn-10" href="{% url 'web:all_in_category' 'Moda' %}"><img src="https://img.icons8.com/carbon-copy/100/000000/hand-drawn-star.png"/></a>
+                    <a class="text-style" href="{% url 'web:all_in_category' 'Moda' %}">Мода і стиль</a>
+                </li>
+                <li>
+                    <a class="btn-mod btn-10" href="{% url 'web:all_in_category' 'novostroyki' %}"><img src="https://img.icons8.com/carbon-copy/100/000000/hand-drawn-star.png"/></a>
+                    <a class="text-style" href="{% url 'web:all_in_category' 'novostroyki' %}">Новобудови</a>
+                </li>
+                <li>
+                    <a class="btn-mod btn-10" href="{% url 'web:all_in_category' 'zhivotnye' %}"><img src="https://img.icons8.com/carbon-copy/100/000000/hand-drawn-star.png"/></a>
+                    <a class="text-style" href="{% url 'web:all_in_category' 'zhivotnye' %}">Тварини</a>
+                </li>
+                <li>
+                    <a class="btn-mod btn-10" href="{% url 'web:all_in_category' 'dom-i-sad' %}"><img src="https://img.icons8.com/carbon-copy/100/000000/hand-drawn-star.png"/></a>
+                    <a class="text-style" href="{% url 'web:all_in_category' 'dom-i-sad' %}">Дім і сад</a>
+                </li>
+                <li>
+                    <a class="btn-mod btn-10" href="{% url 'web:all_in_category' 'elektronika' %}"><img src="https://img.icons8.com/carbon-copy/100/000000/hand-drawn-star.png"/></a>
+                    <a class="text-style" href="{% url 'web:all_in_category' 'elektronika' %}">Електроніка</a>
+                </li>
+                <li>
+                    <a class="btn-mod btn-10" href="{% url 'web:all_in_category' 'hobbi-otdyh-i-sport' %}"><img src="https://img.icons8.com/carbon-copy/100/000000/hand-drawn-star.png"/></a>
+                    <a class="text-style" href="{% url 'web:all_in_category' 'hobbi-otdyh-i-sport' %}">Хобі</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="container my-4 p-3" style="position: relative;">
+    {% for category, adverts in categories.items %}
+    <div class="row pb-3">
+        <div class="col text-category">
+            <a href="{% url 'web:all_in_category' category %}">{{ category|translate_ }}</a>
+        </div>
+    </div>
+    <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3 ">
+        {% for advert, media_list in adverts.items %}
+        <div class="col">
+            {% for media in media_list %}
+            <div class="card h-100 shadow-sm">
+                <img src="{{ media.image.url }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <div class="clearfix mb-3">
+                        <span class="float-start badge rounded-pill bg-primary">VIP</span>
+                        <span class="float-end price-hp">{{ advert.cost }} грн.</span>
+                    </div>
+                    <h5 class="card-title">{{ advert.title }}</h5>
+                    <div class="text-center my-4"> <a href="{% url 'web:advert' advert_id=advert.id %}" class="btn btn-warning">Переглянути</a> </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endfor %}
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

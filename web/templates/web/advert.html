@@ -1,0 +1,137 @@
+{% extends "web/base.html" %}
+{% block title %}
+Сторінка оголошення
+{%endblock%}
+
+{% block main %}
+<link rel='stylesheet' href='https://sachinchoolur.github.io/lightslider/dist/css/lightslider.css'>
+<div class="container mt-2 mb-3 advert-bg">
+    <div class="row no-gutters">
+        <div class="col-md-5 pr-2">
+            <div class="card">
+                <div class="demo">
+                    <ul id="lightSlider">
+                        {% for media in advert.media.all %}
+                        <li data-thumb="{{ media.image.url }}"> <img src="{{ media.image.url }}" /> </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <div class="card mt-2">
+                <div class="p-3">
+                    <h6>Коментарі</h6>
+                </div>
+                <div class="mt-3 d-flex flex-row align-items-center p-3 form-color"> <img src="https://i.imgur.com/zQZSWrt.jpg" width="50" class="rounded-circle mr-2 size-comment-image"> <input type="text" class="form-control" placeholder="Напишіть коментар..."> </div>
+                <div class="mt-2">
+                    <hr>
+                    <div class="d-flex flex-row p-3"> <img src="https://i.imgur.com/zQZSWrt.jpg" class="rounded-circle mr-3 size-comment-image">
+                        <div class="w-100">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="d-flex flex-row align-items-center"> <span class="mr-2">Brian selter</span></div> <small>12h ago</small>
+                            </div>
+                            <p class="text-justify comment-text mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+                            <div class="d-flex flex-row user-feed"> <span class="wish"><i class="fa fa-heartbeat mr-2"></i></span> <span class="ml-3 fa fa-comments-o mr-2">Рейтинг: ★★★★★</span> </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="d-flex flex-row p-3"> <img src="https://i.imgur.com/3J8lTLm.jpg" class="rounded-circle mr-3 size-comment-image">
+                        <div class="w-100">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="d-flex flex-row align-items-center"> <span class="mr-2">Seltos Majito</span></div> <small>2h ago</small>
+                            </div>
+                            <p class="text-justify comment-text mb-0">Tellus in hac habitasse platea dictumst vestibulum. Lectus nulla at volutpat diam ut venenatis tellus. Aliquam etiam erat velit scelerisque in dictum non consectetur. Sagittis nisl rhoncus mattis rhoncus urna neque viverra justo nec. Tellus cras adipiscing enim eu turpis egestas pretium aenean pharetra. Aliquam faucibus purus in massa.</p>
+                            <div class="d-flex flex-row user-feed"> <span class="wish"><i class="fa fa-heartbeat mr-2"></i></span> <span class="ml-3 fa fa-comments-o mr-2">Рейтинг: ★★★★★</span> </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="d-flex flex-row p-3"> <img src="https://i.imgur.com/agRGhBc.jpg" class="rounded-circle mr-3 size-comment-image">
+                        <div class="w-100">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="d-flex flex-row align-items-center"> <span class="mr-2">Maria Santola</span></div> <small>12h ago</small>
+                            </div>
+                            <p class="text-justify comment-text mb-0"> Id eu nisl nunc mi ipsum faucibus. Massa massa ultricies mi quis hendrerit dolor. Arcu bibendum at varius vel pharetra vel turpis nunc eget. Habitasse platea dictumst quisque sagittis purus sit amet volutpat. Urna condimentum mattis pellentesque id.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+                            <div class="d-flex flex-row user-feed"> <span class="wish"><i class="fa fa-heartbeat mr-2"></i></span> <span class="ml-3 fa fa-comments-o mr-2">Рейтинг: ★★★★★</span> </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-7">
+            <div class="card">
+                <div class="d-flex flex-row align-items-center">
+                    <div class="p-ratings"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div> <span class="ml-1">Користувач</span>
+                </div>
+                <div class="about"> <h2 class="font-weight-bold-username mt-1 mb-0"> <strong>{{ advert.user.first_name }}</strong> </h2>
+                </div>
+                <div class="buttons">
+                    <button class="btn btn-outline-primar btn-long cart">{{ advert.user.phone_number }}</button>
+                    <button class="btn btn-long buy">Повідомлення</button>
+                </div>
+                <hr>
+                <div class="product-description">
+                    <div><span class="font-weight-bold">Опубліковано:</span><span> {{ advert.pub_date|date:"Y-m-d" }}</span></div>
+                    <div class="d-flex flex-row align-items-center"> <i class="fa fa-calendar-check-o"></i> <h4 class="ml-1 mt-1">{{ advert.title }}</h4> </div>
+                        <h4 class="font-weight-bold"><strong>{{ advert.cost }} грн.</strong> </h4>
+                    <div class="mt-1"> <span class="font-weight-bold">Опис:</span>
+                        <p>{{ advert.description }}</p>
+                        <div class="bullets">
+                            <div class="d-flex align-items-center"> <span class="dot"></span> <span class="bullet-text">Безкоштовна доставка - (Meest, Новая Почта)</span> </div>
+                            <div class="d-flex align-items-center"> <span class="dot"></span> <span class="bullet-text">Місцезнаходження: {{ advert.user.country }} - {{ advert.user.city }}</span> </div>
+                            <div class="d-flex align-items-center"> <span class="dot"></span> <span class="bullet-text">Законом не передбачено повернення цього товару</span> </div>
+                            <div class="d-flex align-items-center"> <span class="dot"></span> <span class="bullet-text">Рейтинг: ★★★★★ </span> </div>
+                            <div class="d-flex align-items-center"> <span class="dot"></span> <span class="bullet-text">3 успішних доставки</span> </div>
+                            <div class="d-flex align-items-center"> <span class="dot"></span> <span class="bullet-text">ID: {{ advert.id }}</span> </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="d-flex flex-row align-items-center"> <img src="https://play-lh.googleusercontent.com/6Ary86oQx3irIDgH-iT-jOXxdFmsx2mdR9LkOqknoCbZzGNTCUPIyZD9c92htPzCJw" class="rounded-circle store-image">
+                        <div class="d-flex flex-column ml-1 comment-profile">
+                            <div class="comment-ratings"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div> <span class="username">Додати в закладки</span> <small class="followers">Переглядів: 1568</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card mt-2"> <span>Схожі оголошення</span>
+                <div class="similar-products mt-2 d-flex flex-row">
+                    <div class="card border p-1" style="width: 9rem;margin-right: 3px;"> <img src="https://i.imgur.com/KZpuufK.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h6 class="card-title">$1,999</h6>
+                        </div>
+                    </div>
+                    <div class="card border p-1" style="width: 9rem;margin-right: 3px;"> <img src="https://i.imgur.com/GwiUmQA.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h6 class="card-title">$1,699</h6>
+                        </div>
+                    </div>
+                    <div class="card border p-1" style="width: 9rem;margin-right: 3px;"> <img src="https://i.imgur.com/c9uUysL.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h6 class="card-title">$2,999</h6>
+                        </div>
+                    </div>
+                    <div class="card border p-1" style="width: 9rem;margin-right: 3px;"> <img src="https://i.imgur.com/kYWqL7k.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h6 class="card-title">$3,999</h6>
+                        </div>
+                    </div>
+                    <div class="card border p-1" style="width: 9rem;"> <img src="https://i.imgur.com/DhKkTrG.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h6 class="card-title">$999</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js'></script>
+<script src='https://sachinchoolur.github.io/lightslider/dist/js/lightslider.js'></script>
+<script>
+    $('#lightSlider').lightSlider({
+        gallery: true,
+        item: 1,
+        loop: true,
+        slideMargin: 0,
+        thumbItem: 9
+    });
+</script>
+{% endblock %}

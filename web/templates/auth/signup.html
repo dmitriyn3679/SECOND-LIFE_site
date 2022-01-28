@@ -1,0 +1,43 @@
+{% extends "auth/base.html" %}
+
+{% block title %}Реєстрація{% endblock %}
+
+{%block main%}
+<div class="container-fluid d-flex justify-content-center bg-color">
+    <div class="row size-form mb-5 mt-5">
+        <form method="post">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+            <p class="h4 fw-bold text-center mb-3">Реєстрація</p>
+            {% for field in form %}
+                <div class="row pb-1">
+                    <div class="col-12 text">
+                        {{ field.label_tag}}
+                        {{ field }}
+                        {% for error in field.errors %}
+                        <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+            <div class="row">
+                <div class="col-12 mb-4 mt-4">
+                    <div class="d-block">
+                        <button type="submit" class="btn btn-primary"><small><i class="far fa-user pr-2"></i>Реєстрація</small></button>
+                    </div>
+                </div>
+            </div>
+                <a href="{% url 'web:login' %}"><p class="text-center register text-decoration-none d-flex justify-content-end"> Вхід</p></a>
+                <p class="text-center textmuted"> Швидкий вхід через:</p>
+                <div class="pb-4">
+                    <ul class="d-flex align-items-center justify-content-center list-unstyled icons">
+                        <li class="icon me-3"><span class="fab fa-facebook"></span></li>
+                        <li class="icon me-3"><span class="fab fa-google-plus"></span></li>
+                        <li class="icon me-3"><span class="fab fa-twitter"></span></li>
+                        <li class="icon "><span class="fab fa-github"></span></li>
+                    </ul>
+                </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

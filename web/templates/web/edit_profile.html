@@ -1,0 +1,66 @@
+{% extends "web/base.html" %}
+{% block title %}
+Налаштування
+{%endblock%}
+
+{% block main %}
+
+<div class="container rounded bg-white mt-5 mb-5">
+    <div class="row">
+        <div class="col-md-3 border-right">
+            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span class="font-weight-bold">Edogaru</span><span class="text-black-50">edogaru@mail.com.my</span><span> </span></div>
+        </div>
+        <div class="col-md-5 border-right font-size-profile">
+            <div class="p-3 py-5">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h4 class="text-right">Profile Settings</h4>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-md-6"><label class="labels">Ім'я</label><input type="text" class="form-control" placeholder="Ім'я" value=""></div>
+                    <div class="col-md-6"><label class="labels">Прізвище</label><input type="text" class="form-control" value="" placeholder="Прізвище"></div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-12"><label class="labels">Номер телефону</label><input type="text" class="form-control" placeholder="+380" value=""></div>
+                    <div class="col-md-12 py-1"><label class="labels">Поточний пароль</label><input type="text" class="form-control" placeholder="********" value=""></div>
+                    <div class="col-md-12 py-1"><label class="labels">Новий пароль</label><input type="text" class="form-control" placeholder="********" value=""></div>
+                    <div class="col-md-12 py-1"><label class="labels">Email адреса</label><input type="text" class="form-control" placeholder="@gmail.com" value=""></div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-6"><label class="labels">Країна</label><input type="text" class="form-control" placeholder="Україна" value=""></div>
+                    <div class="col-md-6"><label class="labels">Місто</label><input type="text" class="form-control" value="" placeholder="Київ"></div>
+                </div>
+                <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">Зберегти</button></div>
+            </div>
+        </div>
+        <div class="col-md-4">
+           <div class="container p-0">
+                <div class="bank-card px-4">
+                    <p class="h8 py-3">Додати картку</p>
+                    <div class="row gx-3">
+                        <div class="col-12">
+                            <div class="d-flex flex-column">
+                                <p class="text mb-1">Номер платіжної карти</p> <input class="form-control mb-3" type="text" placeholder="0000 0000 0000 0000">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="d-flex flex-column">
+                                <p class="text mb-1">Термін дії</p> <input class="form-control mb-3" type="text" placeholder="MM/РР">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="d-flex flex-column">
+                                <p class="text mb-1">CVV</p> <input class="form-control mb-3 pt-2 " type="password" placeholder="***">
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="btn btn-primary mb-3"> <span class="ps-3">Додати</span> <span class="fas fa-arrow-right"></span> </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+{% endblock %}

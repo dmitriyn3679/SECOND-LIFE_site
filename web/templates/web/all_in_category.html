@@ -1,0 +1,45 @@
+{% extends "web/base.html" %}
+
+{% load web_extras %}
+
+{% block title %}
+Головна сторінка
+{%endblock%}
+{% block main %}
+<div class="container-fluid search-bg">
+    <div class="row height d-flex justify-content-center">
+        <div class="col-md-8 mt-5 mb-5">
+            <div class="search_1"> <i class="fa fa-search"></i> <input type="text" class="form-control" placeholder="Я хочу купити..."> <button class="btn">Пошук</button> </div>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-3">
+    <div class="row">
+        <div class="col">
+            <h3>Всі оголошення з категорії: <b><i><small>{{ category|translate_ }}</small></i></b> </h3>
+        </div>
+    </div>
+    <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3">
+        {% for advert, media_list in adverts.items %}
+        <div class="col">
+            <div class="card h-100 shadow-sm">
+                {% for media in media_list %}
+                <img src="{{ media.image.url }}" class="card-img-top" alt="...">
+                {% endfor %}
+                <div class="card-body">
+                    <div class="clearfix mb-3">
+                        <span class="float-start badge rounded-pill bg-primary">VIP</span>
+                        <span class="float-end price-hp">{{ advert.cost }} грн.</span>
+                    </div>
+                    <h5 class="card-title">{{ advert.title }}</h5>
+                    <div class="text-center my-4"> <a href="{% url 'web:advert' advert_id=advert.id %}" class="btn btn-warning">Переглянути</a> </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends "auth/base.html" %}
+
+{% block title %}Вхід{% endblock %}
+
+{%block main%}
+<div class="container-fluid d-flex  justify-content-center  bg-color">
+    <div class="row size-form mb-5">
+        <form method="post">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+            <p class="h4 fw-bold text-center pt-4 mb-5">Join Our Newsletter </p>
+            <div class="row">
+                <div class="col-12 text">
+                    Email-адреса
+                    {{ form.username }}
+                    <label for="{{ form.username.id_for_label }}"></label>
+                    {{ form.username.errors }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 text">
+                    Ваш поточный пароль
+                    {{ form.password }}
+                    <label for="{{ form.password.id_for_label }}"></label>
+                    {{ form.username.errors }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 mb-4">
+                    <div class="d-block">
+                        <button type="submit" class="btn btn-primary"><small><i class="far fa-user pr-2"></i>Увійти</small></button>
+                    </div>
+                </div>
+            </div>
+            <a href="{% url 'web:signup' %}"><p class="text-center register text-decoration-none d-flex justify-content-end"> Реєстрація</p></a>
+            <p class="text-center textmuted"> Швидкий вхід через:</p>
+            <div class="pb-4">
+                <ul class="d-flex align-items-center justify-content-center list-unstyled icons">
+                    <li class="icon me-3"><span class="fab fa-facebook"></span></li>
+                    <li class="icon me-3"><span class="fab fa-google-plus"></span></li>
+                    <li class="icon me-3"><span class="fab fa-twitter"></span></li>
+                    <li class="icon "><span class="fab fa-github"></span></li>
+                </ul>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
